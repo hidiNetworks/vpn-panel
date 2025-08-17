@@ -25,25 +25,25 @@ services:
     networks:
       - vpn_network
 
-  app_prod:
-    container_name: vpn_panel_prod
-    build:
-      context: .
-      target: production
-    ports:
-      - "3001:3000"
-    environment:
-      - DB_HOST=postgres
-      - DB_PORT=5432
-      - DB_USERNAME=postgres
-      - DB_PASSWORD=postgres
-      - DB_NAME=vpn_panel
-      - JWT_SECRET=your-secret-key
-      - JWT_EXPIRATION=3600
-    depends_on:
-      - postgres
-    networks:
-      - vpn_network
+  # app_prod:
+  #   container_name: vpn_panel_prod
+  #   build:
+  #     context: .
+  #     target: production
+  #   ports:
+  #     - "3001:3000"
+  #   environment:
+  #     - DB_HOST=postgres
+  #     - DB_PORT=5432
+  #     - DB_USERNAME=postgres
+  #     - DB_PASSWORD=postgres
+  #     - DB_NAME=vpn_panel
+  #     - JWT_SECRET=your-secret-key
+  #     - JWT_EXPIRATION=3600
+  #   depends_on:
+  #     - postgres
+  #   networks:
+  #     - vpn_network
 
   postgres:
     container_name: vpn_panel_db

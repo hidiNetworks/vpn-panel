@@ -9,7 +9,7 @@ export class CreateUserDto {
   })
   @IsString()
   @MinLength(4)
-  username: string;
+  username: string | undefined;
 
   @ApiProperty({
     description: 'The password of the user',
@@ -18,5 +18,5 @@ export class CreateUserDto {
   })
   @IsString()
   @MinLength(6)
-  password: string;
+  password: string | undefined;
 }

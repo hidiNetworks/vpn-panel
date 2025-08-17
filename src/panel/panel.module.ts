@@ -1,10 +1,13 @@
 import { Module } from '@nestjs/common';
 import { PanelService } from './panel.service';
 import { PanelController } from './panel.controller';
-import { HiddifyService } from './hiddify/hiddify.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Panel } from './entities/panel.entity';
 
 @Module({
-  providers: [PanelService, HiddifyService],
-  controllers: [PanelController]
+  providers: [PanelService],
+  imports: [TypeOrmModule.forFeature([Panel])],
+  controllers: [PanelController],
+  exports: [PanelService],
 })
 export class PanelModule {}

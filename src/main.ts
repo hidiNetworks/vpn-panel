@@ -6,17 +6,19 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  
+
   // Use Winston for logging
   app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER));
-  
-  // Global validation pipe
-  app.useGlobalPipes(new ValidationPipe({
-    whitelist: true,
-    transform: true,
-  }));
 
-  // Swagger setup
+  // Global validation pipe
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      transform: true,
+    }),
+  );
+
+  //Swagger setup
   const config = new DocumentBuilder()
     .setTitle('VPN Panel API')
     .setDescription('VPN Panel Management API Documentation')
@@ -33,7 +35,7 @@ async function bootstrap() {
     .addTag('Authentication', 'Authentication endpoints')
     .addTag('Users', 'User management endpoints')
     .build();
-  
+
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 

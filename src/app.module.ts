@@ -3,10 +3,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { WinstonModule } from 'nest-winston';
 import * as winston from 'winston';
-import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/users.module';
+//import { AuthModule } from './auth/auth.module';
+//import { UsersModule } from './users/users.module';
 import { PanelModule } from './panel/panel.module';
-import { HiddifyService } from './help/hiddify/hiddify.service';
+//import { HiddifyService } from './panel/hiddify/hiddify.service';
 import databaseConfig from './config/database.config';
 
 @Module({
@@ -42,10 +42,10 @@ import databaseConfig from './config/database.config';
         new winston.transports.File({ filename: 'combined.log' }),
       ],
     }),
-    AuthModule,
-    UsersModule,
+    //AuthModule,
+    //UsersModule,
     PanelModule,
   ],
-  providers: [HiddifyService],
+  providers: [],
 })
 export class AppModule {}
