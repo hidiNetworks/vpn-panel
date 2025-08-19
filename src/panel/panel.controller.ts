@@ -11,10 +11,8 @@ import {
 } from '@nestjs/common';
 import { PanelService } from './panel.service';
 import { CreatePanelDto, UpdatePanelDto } from './dto/panel.dto';
-import { CreateUserDto } from './dto/create-user.dto';
 import { Panel } from './entities/panel.entity';
-import { PanelInfo, User } from './hiddify/hiddify.service';
-import { UserResponseDto } from './dto/user-response.dto';
+import { PanelInfo } from './hiddify/hiddify.service';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @ApiTags('panels')
@@ -86,17 +84,17 @@ export class PanelController {
     return await this.panelService.getPanelInfo();
   }
 
-  @Post('users')
-  @ApiOperation({ summary: 'Create a user in specified panels' })
-  @ApiResponse({
-    status: 201,
-    description: 'User created successfully in specified panels',
-    type: [UserResponseDto],
-  })
-  @ApiResponse({ status: 400, description: 'Invalid request data' })
-  @ApiResponse({ status: 404, description: 'One or more panels not found' })
-  @HttpCode(HttpStatus.CREATED)
-  async createUser(@Body() createUserDto: CreateUserDto): Promise<User[]> {
-    return await this.panelService.createUser(createUserDto);
-  }
+  // @Post('users')
+  // @ApiOperation({ summary: 'Create a user in specified panels' })
+  // @ApiResponse({
+  //   status: 201,
+  //   description: 'User created successfully in specified panels',
+  //   type: [UserResponseDto],
+  // })
+  // @ApiResponse({ status: 400, description: 'Invalid request data' })
+  // @ApiResponse({ status: 404, description: 'One or more panels not found' })
+  // @HttpCode(HttpStatus.CREATED)
+  // async createUser(@Body() createUserDto: CreateUserDto): Promise<Account> {
+  //   return await this.panelService.createUser(createUserDto);
+  // }
 }

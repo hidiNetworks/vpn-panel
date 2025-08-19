@@ -7,6 +7,7 @@ import * as winston from 'winston';
 //import { UsersModule } from './users/users.module';
 import { PanelModule } from './panel/panel.module';
 //import { HiddifyService } from './panel/hiddify/hiddify.service';
+import { AccountModule } from './account/account.module';
 import databaseConfig from './config/database.config';
 
 @Module({
@@ -45,6 +46,7 @@ import databaseConfig from './config/database.config';
     //AuthModule,
     //UsersModule,
     PanelModule,
+    AccountModule,
   ],
   providers: [],
 })
